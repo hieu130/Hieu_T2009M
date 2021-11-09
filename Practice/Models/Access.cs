@@ -7,23 +7,22 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
 
-namespace Hieu_T2009M.Models
+namespace Practice.Models
 {
-    class DataAccess
+     public static class Access
     {
         public async static void InitializeDatabase()
         {
-            await ApplicationData.Current.LocalFolder.CreateFileAsync(
-                "sqliteSample.db", CreationCollisionOption.OpenIfExists
-                );
+            await ApplicationData.Current.LocalFolder.CreateFileAsync("sqliteSample.db", CreationCollisionOption.OpenIfExists);
             string dbpath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "sqliteSample.db");
             using (SqliteConnection db =
                new SqliteConnection($"Filename={dbpath}"))
             {
                 db.Open();
+
                 String tableCommand = "CREATE TABLE IF NOT " +
-                    "EXISTS Contact (phone_ INTEGER PRIMARY KEY, " +
-                    "name NVARCHAR(250) NULL)";
+                    "EXISTS contact (Primary_Key INTEGER PRIMARY KEY, " +
+                    " name_contact NVARCHAR(200) NULL, phone_number NVARCHAR(200) UNIQUE)";
                 SqliteCommand createTable = new SqliteCommand(tableCommand, db);
                 createTable.ExecuteReader();
             }

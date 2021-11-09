@@ -1,0 +1,27 @@
+﻿<Page
+    x:Class="Practice.Pages.List"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Practice.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <ListView
+              x:Name="contactsListView"
+              SelectionMode="Single"
+              Margin="54,139,56,261"
+            >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Margin="10, 20">
+                        <TextBlock Text="{Binding Name}" Margin="10, 20" />
+                        <TextBlock Text="{Binding Phone}" Margin="10, 20" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>
